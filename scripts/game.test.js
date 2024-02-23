@@ -32,12 +32,6 @@ describe("game object contains correct keys", () => {
         expect("turnNumber" in game).toBe(true);
     });
 
-    test("expect data-listener to be true", () => {
-        const elements = document.getElementsByClassName("circle");
-        for (let element of elements) {
-            expect(element.getAttribute("data-listener")).toEqual("true");
-        }
-    });
 });
 
 describe("newGame works correctly", () => {
@@ -59,6 +53,12 @@ describe("newGame works correctly", () => {
     });
     test("should add one move to the computer's game array", () => {
         expect(game.currentGame.length).toBe(1);
+    });
+    test("expect data-listener to be true", () => {
+        const elements = document.getElementsByClassName("circle");
+        for (let element of elements) {
+            expect(element.getAttribute("data-listener")).toEqual("true");
+        }
     });
 });
 

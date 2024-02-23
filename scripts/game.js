@@ -34,13 +34,6 @@ function addTurn() {
 }
 
 
-function lightsOn(circ) {
-    document.getElementById(circ).classList.add("light");
-    setTimeout(() => {
-        document.getElementById(circ).classList.remove("light");
-    }, 400);
-}
-
 function showTurns() {
     game.turnNumber = 0;
     let turns = setInterval(() => {
@@ -50,6 +43,13 @@ function showTurns() {
             clearInterval(turns);
         }
     }, 800);
+}
+
+function lightsOn(circ) {
+    document.getElementById(circ).classList.add("light");
+    setTimeout(() => {
+        document.getElementById(circ).classList.remove("light");
+    }, 400);
 }
 
 function showScore() {
