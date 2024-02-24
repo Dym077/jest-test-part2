@@ -9,8 +9,8 @@ let game = {
 };
 
 function newGame() {
-    game.playerMoves = []; 
     game.currentGame = [];
+    game.playerMoves = []; 
     game.score = 0;
     for (let circle of document.getElementsByClassName("circle")) {
         if (circle.getAttribute("data-listener") !== "true") {
@@ -36,7 +36,7 @@ function addTurn() {
 
 function showTurns() {
     game.turnNumber = 0;
-    let turns = setInterval(() => {
+    let turns = setInterval(function() {
         lightsOn(game.currentGame[game.turnNumber]);
         game.turnNumber++;
         if (game.turnNumber >= game.currentGame.length) {
@@ -47,7 +47,7 @@ function showTurns() {
 
 function lightsOn(circ) {
     document.getElementById(circ).classList.add("light");
-    setTimeout(() => {
+    setTimeout(function() {
         document.getElementById(circ).classList.remove("light");
     }, 400);
 }
@@ -56,4 +56,17 @@ function showScore() {
     document.getElementById("score").innerText = game.score;
 }
 
-module.exports = { game, newGame, showScore, addTurn, lightsOn, showTurns };
+function playerTurn() {
+    let i = game.playerMoves.length - 1;
+    if (game.currentGame[i] === game.playerMoves[i]) {
+        if (game.currentGame.length == game.playerMoves.length) {
+            game.score++;
+            showScore();
+            addTurn();
+        }
+    } else {
+        alert("Wrong move!");
+    }
+}
+
+module.exports = { game, newGame, showScore, addTurn, lightsOn, showTurns, playerTurn };
